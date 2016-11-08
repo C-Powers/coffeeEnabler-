@@ -25,12 +25,12 @@ const Search = React.createClass({
   fetchData () {
     let lat = this.state.position.latitude
     let lon = this.state.position.longitude
-    let latlon = 'll = ' + String(lat) + ', ' + String(lon)
+    let latlon = 'cll=' + String(lat) + ',' + String(lon)
 //  TODO: WARNING WARNING ---- DO NOT FORGET TO HIDE THESE IN A CONFIG FILE
-    let consumerKey = '2uwwUfPbV_5gdDj-A4cBAw'
-    let consumerSecret = 'MEmE9zorxdUCRcC4cmJ-SNgeSTs'
-    let tokenSecret = 'FjGoPj8Gh12GsB2G3eZByDKlJUAY90kY'
-    let token = '	sVGkNiS42d9eukYlNFhOmSzMOd8'
+    const consumerKey = '2uwwUfPbV_5gdDj-A4cBAw'
+    const consumerSecret = 'MEmE9zorxdUCRcC4cmJ-SNgeSTs'
+    const tokenSecret = 'FjGoPj8Gh12GsB2G3eZByDKlJUAY90kY'
+    const token = '	sVGkNiS42d9eukYlNFhOmSzMOd8'
 
     let oauth = new OAuthSimple(consumerKey, tokenSecret)
     let request = oauth.sign({
@@ -58,8 +58,9 @@ const Search = React.createClass({
       console.log('ERROR:', error)
     })
 
-    console.log("data catcher, ", dataCatcher)
+    console.log('data catcher, ', dataCatcher)
   },
+
   render () {
     return (
       <div>
