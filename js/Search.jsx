@@ -25,12 +25,12 @@ const Search = React.createClass({
   fetchData () {
     let lat = this.state.position.latitude
     let lon = this.state.position.longitude
-    let latlon = 'cll=' + String(lat) + ',' + String(lon)
+    let latlon = 'll=' + String(lat) + ',' + String(lon)
 //  TODO: WARNING WARNING ---- DO NOT FORGET TO HIDE THESE IN A CONFIG FILE
     const consumerKey = '2uwwUfPbV_5gdDj-A4cBAw'
     const consumerSecret = 'MEmE9zorxdUCRcC4cmJ-SNgeSTs'
-    const tokenSecret = 'FjGoPj8Gh12GsB2G3eZByDKlJUAY90kY'
-    const token = '	sVGkNiS42d9eukYlNFhOmSzMOd8'
+    const token = 'FjGoPj8Gh12GsB2G3eZByDKlJUAY90kY'
+    const tokenSecret = 'sVGkNiS42d9eukYlNFhOmSzMOd8'
 
     let oauth = new OAuthSimple(consumerKey, tokenSecret)
     let request = oauth.sign({
@@ -39,15 +39,17 @@ const Search = React.createClass({
       parameters: 'term=coffee&' + latlon,
       signatures: {
         api_key: consumerKey,
-        shared_secret: consumerSecret,
+        access_secret: tokenSecret,
         access_token: token,
-        access_secret: tokenSecret
-      },
+        shared_secret: consumerSecret,
+      }
     })
 
     let dataCatcher = []
 
-    fetch(request.signed_url, {method: 'GET'}).then(function (response) {
+    console.log('request ---- ',request)
+
+    fetch(request.signed_url, {method: 'GET', mode: 'no-cors'}).then(function (response) {
       return response.json()
     }).then(function (data) {
       dataCatcher.push({
