@@ -27,40 +27,9 @@ const Search = React.createClass({
     let lon = this.state.position.longitude
     let latlon = 'll=' + String(lat) + ',' + String(lon)
 //  TODO: WARNING WARNING ---- DO NOT FORGET TO HIDE THESE IN A CONFIG FILE
-    const consumerKey = '2uwwUfPbV_5gdDj-A4cBAw'
-    const consumerSecret = 'MEmE9zorxdUCRcC4cmJ-SNgeSTs'
-    const token = 'FjGoPj8Gh12GsB2G3eZByDKlJUAY90kY'
-    const tokenSecret = 'sVGkNiS42d9eukYlNFhOmSzMOd8'
-
-    let oauth = new OAuthSimple(consumerKey, tokenSecret)
-    let request = oauth.sign({
-      action: 'GET',
-      path: 'https://api.yelp.com/v2/search',
-      parameters: 'term=coffee&' + latlon,
-      signatures: {
-        api_key: consumerKey,
-        access_secret: tokenSecret,
-        access_token: token,
-        shared_secret: consumerSecret,
-      }
-    })
-
+    
     let dataCatcher = []
 
-    console.log('request ---- ',request)
-
-    fetch(request.signed_url, {method: 'GET', mode: 'no-cors'}).then(function (response) {
-      return response.json()
-    }).then(function (data) {
-      dataCatcher.push({
-        ident: 'Results',
-        data: data
-      })
-    }).catch(function (error) {
-      console.log('ERROR:', error)
-    })
-
-    console.log('data catcher, ', dataCatcher)
   },
 
   render () {

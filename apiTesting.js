@@ -1,6 +1,4 @@
-console.log('is it working?')
-console.log('yeah')
-
+//https://arian.io/how-to-use-yelps-api-with-node/
 const oauthSignature = require('oauth-signature')
 let n = require('nonce')()
 const request = require('request')
@@ -76,7 +74,11 @@ const default_parameters = {
 
 request_yelp(
   default_parameters,
-  function(a, b, c) {
-    console.log(c)
+  function(err, response, body) {
+    console.log("working! ;]")
+    let obj = JSON.parse(body)
+    console.log(obj.region)
   }
 )
+
+module.exports = request_yelp
