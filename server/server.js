@@ -3,7 +3,6 @@ const bodyParser = require('body-parser');
 const app = express();
 const _ = require('lodash');
 const morgan = require('morgan');
-
 const requestYelp = require('../fetchTest.js');
 const fetch = require('isomorphic-fetch');
 

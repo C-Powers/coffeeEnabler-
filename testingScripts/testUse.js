@@ -1,4 +1,4 @@
-const requestYelp = require('./fetchTest.js')
+const requestYelp = require('./oauthScript.js')
 
 
 const defaultParameters = {
