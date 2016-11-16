@@ -32,6 +32,7 @@ const Search = React.createClass({
 
     let dataCatcher = []
 
+    /*
     const defaultParameters = {
       location: 'San+Diego',
       sort: '2'
@@ -46,7 +47,7 @@ const Search = React.createClass({
     .then(response => response.json())
     .then(data => console.log('NEW FETCH DATA: -----', data.region))
     .catch(e => console.log('error: ', e))
-
+    */
     console.log(dataCatcher)
   },
 
