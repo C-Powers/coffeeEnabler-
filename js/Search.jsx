@@ -1,5 +1,7 @@
 const React = require('react')
-const OAuthSimple = require('OAuthSimple')
+const requestYelp = require('../fetchTest.js')
+const fetch = require('isomorphic-fetch')
+const fetchJsonp = require('fetch-jsonp')
 const { string } = React.PropTypes
 
 const Search = React.createClass({
@@ -27,9 +29,25 @@ const Search = React.createClass({
     let lon = this.state.position.longitude
     let latlon = 'll=' + String(lat) + ',' + String(lon)
 //  TODO: WARNING WARNING ---- DO NOT FORGET TO HIDE THESE IN A CONFIG FILE
-    
+
     let dataCatcher = []
 
+    const defaultParameters = {
+      location: 'San+Diego',
+      sort: '2'
+    }
+    const myInit = { method: 'GET',
+                 mode: 'no-cors',
+                 cache: 'default'
+               }
+
+    fetch(requestYelp(defaultParameters), {
+    })
+    .then(response => response.json())
+    .then(data => console.log('NEW FETCH DATA: -----', data.region))
+    .catch(e => console.log('error: ', e))
+
+    console.log(dataCatcher)
   },
 
   render () {
