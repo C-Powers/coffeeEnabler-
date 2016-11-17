@@ -1,7 +1,6 @@
 const React = require('react')
 const requestYelp = require('./oauthScript.js')
 const fetch = require('isomorphic-fetch')
-const fetchJsonp = require('fetch-jsonp')
 const { string } = React.PropTypes
 
 const Search = React.createClass({
@@ -11,7 +10,8 @@ const Search = React.createClass({
   },
   getInitialState () {
     return {
-      position: "It'll take a moment to find where you are... but we will"
+      position: "It'll take a moment to find where you are... but we will",
+      shops: {}
     }
   },
   componentDidMount () {
@@ -27,28 +27,25 @@ const Search = React.createClass({
   fetchData () {
     let lat = this.state.position.latitude
     let lon = this.state.position.longitude
-    let latlon = /*'ll='*/String(lat) + ',' + String(lon)
+    let latlon = /* 'll='*/String(lat) + ',' + String(lon)
 //  TODO: WARNING WARNING ---- DO NOT FORGET TO HIDE THESE IN A CONFIG FILE
 
-    let dataCatcher = []
-
-    console.log('latlon,  ' , latlon)
+    console.log('latlon,  ', latlon)
     const parameters = {
       term: 'coffee',
-      ll: latlon,
+      ll: latlon
     }
 
     fetch(requestYelp(parameters), {
     })
     .then(response => response.json())
-    .then(data => console.log('NEW FETCH DATA: -----', data))
+    .then(data => this.setState({shops: data}))
     .catch(e => console.log('error: ', e))
   },
-
   render () {
     return (
       <div>
-        <div><pre>{JSON.stringify(this.state.position, null, 2)}</pre></div>
+        <div><pre>{JSON.stringify(this.state.shops, null, 2)}</pre></div>
         <button onClick={this.fetchData} >
         Press me
         </button>
