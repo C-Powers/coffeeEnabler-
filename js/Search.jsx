@@ -1,12 +1,10 @@
 const React = require('react')
 const requestYelp = require('./oauthScript.js')
 const fetch = require('isomorphic-fetch')
-const { string } = React.PropTypes
+const Display = require('./Display')
 
 const Search = React.createClass({
   propTypes: {
-    color: string,
-    title: string
   },
   getInitialState () {
     return {
@@ -27,8 +25,7 @@ const Search = React.createClass({
   fetchData () {
     let lat = this.state.position.latitude
     let lon = this.state.position.longitude
-    let latlon = /* 'll='*/String(lat) + ',' + String(lon)
-//  TODO: WARNING WARNING ---- DO NOT FORGET TO HIDE THESE IN A CONFIG FILE
+    let latlon = String(lat) + ',' + String(lon)
 
     console.log('latlon,  ', latlon)
     const parameters = {
@@ -44,14 +41,28 @@ const Search = React.createClass({
   },
   render () {
     return (
-      <div>
-        <div><pre>{JSON.stringify(this.state.shops, null, 2)}</pre></div>
-        <button onClick={this.fetchData} >
-        Press me
-        </button>
+      <div className="">
+        <div>
+          <div className="title text-center">
+            Coffee Stop
+          </div>
+          <button className="runButt btn btn-primary text-center" onClick={this.fetchData} >
+          Press me
+          </button>
+        </div>
+        <div className="shops-display">
+          <Display data={this.state.shops} />
+        </div>
       </div>
     )
   }
 })
+
+/*
+{this.state.shops
+  .map((shop) => (
+    <Display data={shop} key={shop.name} />
+  ))}
+*/
 
 module.exports = Search

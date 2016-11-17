@@ -5,7 +5,7 @@ const Search = require('./Search')
 const App = React.createClass({
   render () {
     return (
-      <Search title="poop" />
+      <Search />
     )
   }
 })
