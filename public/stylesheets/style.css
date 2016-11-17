@@ -72,3 +72,19 @@ html {
 h1 {
   font-size: 2.0em;
 }
+
+/* line 12, ../sass/style.scss */
+.title {
+  margin: 25vh 0 15vh 0;
+  font-size: 2.5em;
+}
+
+/* line 17, ../sass/style.scss */
+.runButt {
+  margin: 0 0 10vh 0;
+}
+
+/* line 21, ../sass/style.scss */
+.shops {
+  margin: 0 0 5em 0;
+}

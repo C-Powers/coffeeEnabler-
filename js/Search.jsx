@@ -9,7 +9,7 @@ const Search = React.createClass({
   getInitialState () {
     return {
       position: "It'll take a moment to find where you are... but we will",
-      shops: {}
+      shops: []
     }
   },
   componentDidMount () {
@@ -36,22 +36,25 @@ const Search = React.createClass({
     fetch(requestYelp(parameters), {
     })
     .then(response => response.json())
-    .then(data => this.setState({shops: data}))
+    .then(data => this.setState({shops: data.businesses}))
     .catch(e => console.log('error: ', e))
   },
   render () {
     return (
       <div className="">
         <div>
-          <div className="title text-center">
+          <h1 className="title text-center">
             Coffee Stop
-          </div>
+          </h1>
           <button className="runButt btn btn-primary text-center" onClick={this.fetchData} >
           Press me
           </button>
         </div>
-        <div className="shops-display">
-          <Display data={this.state.shops} />
+        <div>
+        {this.state.shops
+          .map((shop) => (
+            <Display data={shop} key={shop.phone} />
+          ))}
         </div>
       </div>
     )
@@ -59,10 +62,9 @@ const Search = React.createClass({
 })
 
 /*
-{this.state.shops
-  .map((shop) => (
-    <Display data={shop} key={shop.name} />
-  ))}
+  <div className="shops-display">
+    <Display data={this.state.shops} />
+  </div>
 */
 
 module.exports = Search
