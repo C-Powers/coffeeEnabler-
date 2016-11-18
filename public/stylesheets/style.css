@@ -74,17 +74,25 @@ h1 {
 }
 
 /* line 12, ../sass/style.scss */
-.title {
+.header-info {
   margin: 25vh 0 15vh 0;
+}
+/* line 15, ../sass/style.scss */
+.header-info .title {
   font-size: 2.5em;
 }
+/* line 19, ../sass/style.scss */
+.header-info #yelp-tag {
+  width: 75px;
+  height: auto;
+}
 
-/* line 17, ../sass/style.scss */
+/* line 26, ../sass/style.scss */
 .runButt {
   margin: 0 0 10vh 0;
 }
 
-/* line 21, ../sass/style.scss */
+/* line 30, ../sass/style.scss */
 .shop-content {
   display: -webkit-flex;
   display: flex;
@@ -96,7 +104,7 @@ h1 {
   align-items: center;
 }
 
-/* line 28, ../sass/style.scss */
+/* line 37, ../sass/style.scss */
 .shops {
   margin: 0 0 5em 0;
   width: 300px;
@@ -107,7 +115,7 @@ h1 {
   -webkit-justify-content: flex-start;
   justify-content: flex-start;
 }
-/* line 35, ../sass/style.scss */
+/* line 44, ../sass/style.scss */
 .shops .shop-data {
   margin: 0 0 0 20px;
   display: -webkit-flex;
@@ -115,11 +123,15 @@ h1 {
   -webkit-flex-direction: column;
   flex-direction: column;
 }
-/* line 40, ../sass/style.scss */
+/* line 49, ../sass/style.scss */
 .shops .shop-data strong {
   font-weight: 500;
 }
-/* line 43, ../sass/style.scss */
+/* line 53, ../sass/style.scss */
 .shops .shop-data p {
   margin: 0 0 5px 0;
+}
+/* line 57, ../sass/style.scss */
+.shops .shop-data a {
+  color: #c41200;
 }

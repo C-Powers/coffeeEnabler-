@@ -20,14 +20,18 @@ const Search = React.createClass({
     console.log('latlon,  ', latlon)
     const parameters = {
       term: 'coffee',
-      ll: latlon
+      ll: latlon,
+      err: ''
     }
 
     fetch(requestYelp(parameters), {
     })
     .then(response => response.json())
     .then(data => this.setState({shops: data.businesses}))
-    .catch(e => console.log('error: ', e))
+    .catch(e => {
+      console.log('error: ', e)
+      this.setState({err: 'We had an issue referencing Yelp\'s API. :('})
+    })
   },
   componentDidMount () {
     /*
@@ -41,23 +45,28 @@ const Search = React.createClass({
         console.log(position.coords)
         this.fetchData()
       },
-      (error) => console.log(error),
+      (error) => {
+        this.setState({err: 'We could not find your position. Error: ' + error.message})
+        console.log(error)
+      },
       {enableHighAccuracy: true, timeout: 20000, maximumAge: 1000}
     )
   },
   render () {
     return (
       <div className="text-center">
-        <div>
+        <div className="header-info">
           <h1 className="title">
-            Coffee Stop
+            Coffee Stops
           </h1>
+          <img id="yelp-tag" src="https://s3-media2.fl.yelpcdn.com/assets/srv0/developer_pages/95212dafe621/assets/img/yelp-2c.png"></img>
         </div>
         <div className="shop-content">
-        {this.state.shops
-          .map((shop) => (
-            <Display data={shop} key={shop.phone} />
-          ))}
+          <div> <p>{this.state.err}</p> </div>
+          {this.state.shops
+            .map((shop) => (
+              <Display data={shop} key={shop.phone} />
+            ))}
         </div>
       </div>
     )

@@ -9,10 +9,19 @@ h1 {
   font-size: 2.0em;
 }
 
-.title {
+.header-info {
   margin: 25vh 0 15vh 0;
-  font-size: 2.5em;
+
+  .title {
+    font-size: 2.5em;
+  }
+
+  #yelp-tag {
+    width: 75px;
+    height: auto;
+  }
 }
+
 
 .runButt {
   margin: 0 0 10vh 0;
@@ -40,8 +49,13 @@ h1 {
     strong {
       font-weight: 500;
     }
+
     p {
       margin: 0 0 5px 0;
+    }
+
+    a {
+      color: #c41200;
     }
   }
 }
