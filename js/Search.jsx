@@ -12,16 +12,6 @@ const Search = React.createClass({
       shops: []
     }
   },
-  componentDidMount () {
-    navigator.geolocation.getCurrentPosition(
-      (position) => {
-        this.setState({position: position.coords})
-        console.log(position.coords)
-      },
-      (error) => console.log(error),
-      {enableHighAccuracy: true, timeout: 20000, maximumAge: 1000}
-    )
-  },
   fetchData () {
     let lat = this.state.position.latitude
     let lon = this.state.position.longitude
@@ -39,6 +29,22 @@ const Search = React.createClass({
     .then(data => this.setState({shops: data.businesses}))
     .catch(e => console.log('error: ', e))
   },
+  componentDidMount () {
+    /*
+    Grab the user's coordinates to pass into our
+    fetchData() function. After coordinates are aquired,
+    we then call fetchData()
+    */
+    navigator.geolocation.getCurrentPosition(
+      (position) => {
+        this.setState({position: position.coords})
+        console.log(position.coords)
+        this.fetchData()
+      },
+      (error) => console.log(error),
+      {enableHighAccuracy: true, timeout: 20000, maximumAge: 1000}
+    )
+  },
   render () {
     return (
       <div className="text-center">
@@ -46,9 +52,6 @@ const Search = React.createClass({
           <h1 className="title">
             Coffee Stop
           </h1>
-          <button className="runButt btn btn-primary text-center" onClick={this.fetchData} >
-          Press me
-          </button>
         </div>
         <div className="shop-content">
         {this.state.shops

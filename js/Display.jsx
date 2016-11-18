@@ -12,9 +12,13 @@ const Display = React.createClass({
           <img src={this.props.data.image_url} />
         </div>
         <div className="shop-data">
-          <p className=""> <strong> {this.props.data.name} </strong> </p>
+          <p className=""> <strong>
+            <a href={this.props.data.url} target="_blank">
+            {this.props.data.name}
+            </a>
+          </strong> </p>
           <p> {this.props.data.rating}/5 </p>
-          <p> {this.props.data.phone} </p>
+          <p> {this.props.data.display_phone} </p>
         </div>
       </div>
     )
