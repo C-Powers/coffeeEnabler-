@@ -85,6 +85,41 @@ h1 {
 }
 
 /* line 21, ../sass/style.scss */
+.shop-content {
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: column;
+  flex-direction: column;
+  -webkit-justify-content: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  align-items: center;
+}
+
+/* line 28, ../sass/style.scss */
 .shops {
   margin: 0 0 5em 0;
+  width: 300px;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  -webkit-justify-content: flex-start;
+  justify-content: flex-start;
+}
+/* line 35, ../sass/style.scss */
+.shops .shop-data {
+  margin: 0 0 0 20px;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: column;
+  flex-direction: column;
+}
+/* line 40, ../sass/style.scss */
+.shops .shop-data strong {
+  font-weight: 500;
+}
+/* line 43, ../sass/style.scss */
+.shops .shop-data p {
+  margin: 0 0 5px 0;
 }

@@ -41,16 +41,16 @@ const Search = React.createClass({
   },
   render () {
     return (
-      <div className="">
+      <div className="text-center">
         <div>
-          <h1 className="title text-center">
+          <h1 className="title">
             Coffee Stop
           </h1>
           <button className="runButt btn btn-primary text-center" onClick={this.fetchData} >
           Press me
           </button>
         </div>
-        <div>
+        <div className="shop-content">
         {this.state.shops
           .map((shop) => (
             <Display data={shop} key={shop.phone} />

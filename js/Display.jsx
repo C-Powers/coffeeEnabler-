@@ -8,9 +8,14 @@ const Display = React.createClass({
   render () {
     return (
       <div className="shops">
-        <p> {this.props.data.name} </p>
-        <p> {this.props.data.rating}/5 </p>
-        <p> {this.props.data.phone} </p>
+        <div className="shop-image">
+          <img src={this.props.data.image_url} />
+        </div>
+        <div className="shop-data">
+          <p className=""> <strong> {this.props.data.name} </strong> </p>
+          <p> {this.props.data.rating}/5 </p>
+          <p> {this.props.data.phone} </p>
+        </div>
       </div>
     )
   }

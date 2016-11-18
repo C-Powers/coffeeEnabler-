@@ -18,6 +18,30 @@ h1 {
   margin: 0 0 10vh 0;
 }
 
+.shop-content {
+  @include display-flex;
+  @include flex-direction(column);
+  @include justify-content(center);
+  @include align-items(center);
+}
+
 .shops {
   margin: 0 0 5em 0;
+  width: 300px;
+  @include display-flex;
+  @include flex-direction(row);
+  @include justify-content(flex-start);
+
+  .shop-data {
+    margin: 0 0 0 20px;
+    @include display-flex;
+    @include flex-direction(column);
+    //@include justify-content(space-around);
+    strong {
+      font-weight: 500;
+    }
+    p {
+      margin: 0 0 5px 0;
+    }
+  }
 }
