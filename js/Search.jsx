@@ -9,7 +9,8 @@ const Search = React.createClass({
   getInitialState () {
     return {
       position: "It'll take a moment to find where you are... but we will",
-      shops: []
+      shops: [],
+      err: ''
     }
   },
   fetchData () {
@@ -20,17 +21,21 @@ const Search = React.createClass({
     console.log('latlon,  ', latlon)
     const parameters = {
       term: 'coffee',
-      ll: latlon,
-      err: ''
+      ll: latlon
     }
-
+    /*
+      Here is where we fetch the yelp data by passing our
+      keys into the requestYelp function.
+      It deals with Yelp's oauth,
+      and creates the right callback url.
+    */
     fetch(requestYelp(parameters), {
     })
     .then(response => response.json())
     .then(data => this.setState({shops: data.businesses}))
     .catch(e => {
       console.log('error: ', e)
-      this.setState({err: 'We had an issue referencing Yelp\'s API. :('})
+      this.setState({err: 'We had an issue referencing Yelp\'s API. Refresh to try again.'})
     })
   },
   componentDidMount () {
@@ -61,6 +66,8 @@ const Search = React.createClass({
           </h1>
           <img id="yelp-tag" src="https://s3-media2.fl.yelpcdn.com/assets/srv0/developer_pages/95212dafe621/assets/img/yelp-2c.png"></img>
         </div>
+        <div>
+        </div>
         <div className="shop-content">
           <div> <p>{this.state.err}</p> </div>
           {this.state.shops
@@ -72,11 +79,5 @@ const Search = React.createClass({
     )
   }
 })
-
-/*
-  <div className="shops-display">
-    <Display data={this.state.shops} />
-  </div>
-*/
 
 module.exports = Search
