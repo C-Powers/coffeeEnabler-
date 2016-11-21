@@ -19809,8 +19809,8 @@
 
 	var React = __webpack_require__(1);
 	var requestYelp = __webpack_require__(160);
-	var fetch = __webpack_require__(209);
-	var Display = __webpack_require__(211);
+	var fetch = __webpack_require__(210);
+	var Display = __webpack_require__(212);
 
 	var Search = React.createClass({
 	  displayName: 'Search',
@@ -19918,6 +19918,7 @@
 	var n = __webpack_require__(202)();
 	var qs = __webpack_require__(203);
 	var _ = __webpack_require__(206);
+	var yelpKeys = __webpack_require__(209);
 
 	var requestYelp = function requestYelp(setParameters) {
 	  var httpMethod = 'GET';
@@ -19930,8 +19931,8 @@
 	    }
 	  */
 	  var requiredParameters = {
-	    oauth_consumer_key: '2uwwUfPbV_5gdDj-A4cBAw',
-	    oauth_token: 'FjGoPj8Gh12GsB2G3eZByDKlJUAY90kY',
+	    oauth_consumer_key: yelpKeys.oauth_consumer_key,
+	    oauth_token: yelpKeys.oauth_token,
 	    oauth_nonce: n(),
 	    oauth_timestamp: n().toString().substr(0, 10),
 	    oauth_signature_method: 'HMAC-SHA1',
@@ -19942,8 +19943,8 @@
 	  var parameters = _.assign( /*  defaultParameters,*/setParameters, requiredParameters);
 
 	  /* Secret keys are used to create a request specific signature*/
-	  var consumerSecret = 'MEmE9zorxdUCRcC4cmJ-SNgeSTs';
-	  var tokenSecret = 'sVGkNiS42d9eukYlNFhOmSzMOd8';
+	  var consumerSecret = yelpKeys.consumerSecret;
+	  var tokenSecret = yelpKeys.tokenSecret;
 
 	  /* Then we call Yelp's Oauth 1.0a server, and it returns a signature */
 	  /* Note: This signature is only good for 300 seconds after the oauth_timestamp */
@@ -36614,6 +36615,20 @@
 
 /***/ },
 /* 209 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	module.exports = {
+	  oauth_consumer_key: '2uwwUfPbV_5gdDj-A4cBAw',
+	  oauth_token: 'FjGoPj8Gh12GsB2G3eZByDKlJUAY90kY',
+	  consumerSecret: 'MEmE9zorxdUCRcC4cmJ-SNgeSTs',
+	  tokenSecret: 'sVGkNiS42d9eukYlNFhOmSzMOd8'
+
+	};
+
+/***/ },
+/* 210 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -36622,11 +36637,11 @@
 	// on the global object (window or self)
 	//
 	// Return that as the export for use in Webpack, Browserify etc.
-	__webpack_require__(210);
+	__webpack_require__(211);
 	module.exports = self.fetch.bind(self);
 
 /***/ },
-/* 210 */
+/* 211 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -37080,7 +37095,7 @@
 	})(typeof self !== 'undefined' ? self : undefined);
 
 /***/ },
-/* 211 */
+/* 212 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
